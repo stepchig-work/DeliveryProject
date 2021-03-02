@@ -1,0 +1,26 @@
+
+<div>
+  <h6>Name: {{getAccount.name}} </h6>
+  <h6>Surname: {{getAccount.surname}}</h6>
+  <h6>Role: {{accountRoles2LabelMapping[getAccount.role]}}</h6>
+</div>
+<div *ngIf="ifBanAllowed">
+  <div class="row">
+    <input  [(ngModel)]="userName" class="col"  placeholder="Enter username to ban">
+    <button class="btn btn-primary" (click)="banUser($event)">Ban</button>
+  </div>
+</div>
+<div class="contrainer align-items-center">
+  <h3 class="align-self-center">Active Orders</h3>
+  <div class="pre-scrollable" *ngIf="currentOrders && currentOrders.length > 0">
+    <div *ngFor="let currentOrder of currentOrders">
+      <app-account-order [order]="currentOrder" (onUserBanned)="onUserBanned($event)"></app-account-order>
+    </div>
+  </div>
+  <h3 class="align-self-center">Finished Orders</h3>
+  <div class="pre-scrollable" *ngIf="finishedOrders && finishedOrders.length > 0">
+    <div class="my-2" *ngFor="let finishedOrder of finishedOrders">
+      <app-account-order [order]="finishedOrder"></app-account-order>
+    </div>
+  </div>
+</div>

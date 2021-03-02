@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FoodDelivery.Client.Entities\FoodDelivery.Client.Entities.csproj" />
+    <ProjectReference Include="..\FoodDelivery.Common.Interface\FoodDelivery.Common.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

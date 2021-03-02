@@ -1,0 +1,19 @@
+<div class="box-shadow-list-element rounded">
+  <div class=" row  align-items-center" (click)="showRestaurant($event)" role="button">
+    <div class="col-2">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img  *ngIf="image"  [src]="formatImage(image)"   class="rounded img-responsive fit-image"/>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <h4 class="d-flex align-items-center justify-content-center">{{restaurantName}} </h4>
+      <span class="">{{restaurantDescription}}</span>
+    </div>
+    <div class="col-2" *ngIf="ifEditingRestaurantAllowed">
+      <button class="btn btn-primary mr-2" (click)="editRestaurant($event)">Edit</button>
+      <button class="btn btn-primary" (click)="removeRestaurant($event)">Remove</button>
+    </div>
+  </div>
+</div>

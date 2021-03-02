@@ -1,0 +1,27 @@
+<form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" formControlName="name" placeholder="Enter name" [ngClass]="{ 'is-invalid': submitted && r.name.errors }">
+    <div *ngIf="submitted && r.name.errors" class="invalid-feedback">
+      <div *ngIf="r.name.errors.required">Name is required</div>
+    </div>
+  </div>
+  <div class="form-group" for="description">
+    <label>Description</label>
+    <textarea class="text-area-description  form-control" formControlName="description" [ngClass]="{ 'is-invalid': submitted && r.description.errors }"></textarea>
+    <div *ngIf="submitted && r.description.errors" class="invalid-feedback">
+      <div *ngIf="r.description.errors.required">Description is required</div>
+    </div>
+  </div>
+  <div class="col">
+    <label>Image</label>
+    <div class="row">
+      <img *ngIf="r.image.value" [src]="r.image.value" class="rounded img-responsive image-for-creation" />
+      <input class="align-self-end" type="file" (change)="onFileChange($event)" />
+      <div *ngIf="submitted && r.image.errors" class="invalid-feedback">
+        <div *ngIf="r.image.errors.required">Image is required</div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

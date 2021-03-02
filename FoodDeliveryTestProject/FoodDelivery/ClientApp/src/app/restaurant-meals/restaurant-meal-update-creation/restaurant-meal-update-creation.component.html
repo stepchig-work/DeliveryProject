@@ -1,0 +1,36 @@
+<form [formGroup]="mealForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" formControlName="name" placeholder="Enter name" [ngClass]="{ 'is-invalid': submitted && m.name.errors }">
+    <div *ngIf="submitted && m.name.errors" class="invalid-feedback">
+      <div *ngIf="m.name.errors.required">Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type='number' class="form-control" formControlName="price" placeholder="Enter price" [ngClass]="{ 'is-invalid': submitted && m.price.errors }">
+    <div *ngIf="submitted && m.price.errors" class="invalid-feedback">
+      <div *ngIf="m.price.errors.required">Price is required</div>
+      <div *ngIf="m.price.errors.min">Price should be more than 0</div>
+      <div *ngIf="m.price.errors.max">Price should be less then 10000</div>
+    </div>
+  </div>
+  <div class="form-group" for="description">
+    <label>Description</label>
+    <textarea class="text-area-description  form-control" formControlName="description" [ngClass]="{ 'is-invalid': submitted && m.description.errors }"></textarea>
+    <div *ngIf="submitted && m.description.errors" class="invalid-feedback">
+      <div *ngIf="m.description.errors.required">Description is required</div>
+    </div>
+  </div>
+  <div class="col">
+    <label>Image</label>
+    <div class="row">
+      <img *ngIf="m.image.value" [src]="m.image.value" class="rounded img-responsive image-for-creation" />
+      <input class="align-self-end" type="file" (change)="onFileChange($event)" />
+      <div *ngIf="submitted && m.image.errors" class="invalid-feedback">
+        <div *ngIf="m.image.errors.required">Image is required</div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,12 @@
+<footer class="footer bg-white border-top" *ngIf="ifBuyingAllowed">
+  <nav class=" mb-3">
+    <div class="container">  
+      <div class="row  justify-content-end">
+        <div  *ngIf="authenticationService && authenticationService.isLoggedIn">
+          <a routerLink="/order" class="bi bi-cart-fill icon-ligh-blue-big" role="button" aria-pressed="true"></a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</footer>

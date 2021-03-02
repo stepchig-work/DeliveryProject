@@ -1,0 +1,138 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+		<IsPackable>false</IsPackable>
+		<SpaRoot>ClientApp\</SpaRoot>
+		<DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+		<!-- Set this to true if you enable server-side prerendering -->
+		<BuildServerSideRenderer>false</BuildServerSideRenderer>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+		<PackageReference Include="log4net" Version="2.0.12" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="5.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="ClientApp\tsconfig.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<!-- Don't publish the SPA source files, but do show them in the project files list -->
+		<Content Remove="$(SpaRoot)**" />
+		<None Remove="$(SpaRoot)**" />
+		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="ClientApp\e2e\src\randomtester.spec.ts" />
+		<None Remove="ClientApp\src\app\alert-system\alert.component.ts" />
+		<None Remove="ClientApp\src\app\alert-system\alert.model.ts" />
+		<None Remove="ClientApp\src\app\alert-system\alert.service.ts" />
+		<None Remove="ClientApp\src\app\enums\order-statuses.enum.ts" />
+		<None Remove="ClientApp\src\app\helpers\must-match.validator.ts" />
+		<None Remove="ClientApp\src\app\helpers\password-strength.validator.ts" />
+		<None Remove="ClientApp\src\app\models\meal-for-order.model.ts" />
+		<None Remove="ClientApp\src\app\models\meal-image.ts" />
+		<None Remove="ClientApp\src\app\models\order-status.model.ts" />
+		<None Remove="ClientApp\src\app\models\order.model.ts" />
+		<None Remove="ClientApp\src\app\models\restaurant-image.model.ts" />
+		<None Remove="ClientApp\src\app\models\restaurant.model.ts" />
+		<None Remove="ClientApp\src\app\models\signalr-events-args\order-status-change-event-args.interface.ts" />
+		<None Remove="ClientApp\src\app\nav-menu\nav-menu.component.spec.ts" />
+		<None Remove="ClientApp\src\app\services\account-service.ts" />
+		<None Remove="ClientApp\src\app\services\authentication.service.ts" />
+		<None Remove="ClientApp\src\app\services\meals.service.ts" />
+		<None Remove="ClientApp\src\app\services\order-creation.service.spec.ts" />
+		<None Remove="ClientApp\src\app\services\order-creation.service.ts" />
+		<None Remove="ClientApp\src\app\services\orders.service.ts" />
+		<None Remove="ClientApp\src\app\services\restaurants.service.ts" />
+		<None Remove="ClientApp\src\app\services\signalR.service.ts" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FoodDelivery.Business.Interface\FoodDelivery.Business.Interface.csproj" />
+		<ProjectReference Include="..\FoodDelivery.Common\FoodDelivery.Common.csproj" />
+		<ProjectReference Include="..\FoodDelivery.DataAccess\FoodDelivery.DataAccess.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<TypeScriptCompile Include="ClientApp\e2e\src\randomtester.spec.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\alert-system\alert.component.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\alert-system\alert.model.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\alert-system\alert.service.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\enums\order-statuses.enum.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\helpers\must-match.validator.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\helpers\password-strength.validator.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\models\meal-image.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\models\restaurant-image.model.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\models\meal-for-order.model.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\models\order.model.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\models\order-status.model.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\models\restaurant.model.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\models\signalr-events-args\order-status-change-event-args.interface.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\services\authentication.service.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\services\account-service.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\services\meals.service.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\services\order-creation.service.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\services\orders.service.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\services\restaurants.service.ts" />
+		<TypeScriptCompile Include="ClientApp\src\app\services\signalR.service.ts" />
+	</ItemGroup>
+
+	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+		<!-- Ensure Node.js is installed -->
+		<Exec Command="node --version" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+		<Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+	</Target>
+
+	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+		<!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+		<!-- Include the newly-built files in the publish output -->
+		<ItemGroup>
+			<DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+			<DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+				<RelativePath>%(DistFiles.Identity)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<TypeScriptTarget>es2017</TypeScriptTarget>
+		<TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+		<TypeScriptModuleKind />
+		<TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+		<TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+		<TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+		<TypeScriptOutFile />
+		<TypeScriptOutDir />
+		<TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+		<TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+		<TypeScriptSourceMap>True</TypeScriptSourceMap>
+		<TypeScriptMapRoot />
+		<TypeScriptSourceRoot />
+		<TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
+	</PropertyGroup>
+
+</Project>

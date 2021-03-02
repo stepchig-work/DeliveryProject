@@ -1,0 +1,41 @@
+
+
+<h3 class="align-items-center">{{restaurantName}}</h3>
+<div class="col">
+  <div>Total price: {{order.price}}</div>
+  <div>Creation date: {{transformDate(order.creationDate)}}</div>
+</div>
+
+
+<div class="contrainer align-items-center">
+  <h3 class="align-self-center">Order</h3>
+  <table class="table table-borderless">
+    <tr>
+      <th scope="col">Meal name</th>
+      <th scope="col">Ammount</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total Price</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let orderMeal of orderMeals">
+        <td>{{orderMeal.mealName}}</td>
+        <td>{{orderMeal.ammountOfMeals}}</td>
+        <td>{{orderMeal.mealPrice}}</td>
+        <td>{{orderMeal.mealPrice * orderMeal.ammountOfMeals}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 class="align-self-center">Order Status</h3>
+  <table class="table table-borderless">
+    <tr>
+      <th scope="col">Order status</th>
+      <th scope="col">Time of change</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let orderStatus of orderStatuses">
+        <td>{{orderStatuses2LabelMapping[this.orderStatus.status]}}</td>
+        <td>{{transformDate(this.orderStatus.statusChangeTime)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

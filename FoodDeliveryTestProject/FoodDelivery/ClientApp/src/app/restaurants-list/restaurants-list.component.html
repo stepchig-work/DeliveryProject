@@ -1,0 +1,10 @@
+<div>
+  <button *ngIf="ifAddingRestaurantAllowed" class="btn btn-primary m-2" (click)="addRestaurant($event)">Add new restaurant</button>
+
+  <div *ngFor="let restaurant of restaurants">
+    <div class="mb-3">
+      <app-restaurants-list-item [restaurantName]="restaurant.name" [restaurantDescription]="restaurant.description" [restaurantId]="restaurant.entityId" (onRemoveRestaurant)="onRestaurantRemoved($event)">
+      </app-restaurants-list-item>
+    </div>
+  </div>
+</div>

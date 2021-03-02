@@ -1,0 +1,16 @@
+<div class="container border border-info order-element row align-items-center">
+
+  <span class="col  d-none d-lg-block">{{restaurantName}}</span>
+  <span class="col-2" *ngIf="authenticationService.isUserOwner">{{userName}}</span>
+  <span class="col-2">Status: {{orderStatuses2LabelMapping[orderStatus]}}</span>
+  <span class="col">Price: {{order.price}}</span>
+
+  <button class="col-1 btn btn-primary mr-2 d-none d-sm-block mw-100" *ngIf="isActionAllowed" (click)="changeStatus($event)" style="font-size:1vw;">Next step</button>
+
+  <button class="col-1 btn btn-primary mr-2 mw-100" (click)="showOrder($event)" style="font-size:1vw;">More info</button>
+
+  <button class="col-1 btn btn-primary d-none d-lg-block mw-100" (click)="banUser($event)" style="font-size:1vw;" *ngIf=" authenticationService.isUserOwner">Ban User</button>
+
+
+
+</div>

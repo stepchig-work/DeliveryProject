@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FoodDelivery.Business.Entities\FoodDelivery.Business.Entities.csproj" />
+    <ProjectReference Include="..\FoodDelivery.Business.Interface\FoodDelivery.Business.Interface.csproj" />
+    <ProjectReference Include="..\FoodDelivery.Client.Entities\FoodDelivery.Client.Entities.csproj" />
+    <ProjectReference Include="..\FoodDelivery.Common.Interface\FoodDelivery.Common.Interface.csproj" />
+    <ProjectReference Include="..\FoodDelivery.DataAccess.Interface\FoodDelivery.DataAccess.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

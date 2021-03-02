@@ -1,0 +1,15 @@
+<div class="box-shadow-list-element container">
+    <div class="col" *ngIf="!getOrder || getOrder.mealsForOrder.length <= 0; else orderlist">
+      <h4>No meals in order</h4>
+    </div>
+    <ng-template class="pre-scrollable" #orderlist>
+      <div *ngFor="let mealForOrder of getOrder.mealsForOrder">
+        <app-meal-for-order [mealForOrder]="mealForOrder">
+        </app-meal-for-order>
+      </div>
+
+      <nav class="page-footer border-top mb-3 align-items-center">
+        <button class="btn btn-primary" (click)="sendOrder($event)">Send Order </button>
+      </nav>
+    </ng-template>
+</div>

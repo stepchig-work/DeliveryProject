@@ -1,0 +1,15 @@
+<div class="box-shadow-list-element container">
+  <img *ngIf="image" [src]="formatImage(image)" class="rounded img-responsive fit-image-fixed-height" />
+  <h4 *ngIf="restaurant" class="align-items-center justify-content-center">{{restaurant.name}} </h4>
+
+  <button *ngIf="ifAddingAllowed" class="btn btn-primary" (click)="addMeal($event)">Add new meal</button>
+
+
+  <div *ngFor="let meal of meals">
+    <app-restaurant-meal-item [meal]="meal" (onRemoveMeal)="onMealRemoved($event)">
+    </app-restaurant-meal-item>
+  </div>
+  <div *ngIf="!meals || meals.length <= 0">
+    <h4>No meals in this restaurant</h4>
+  </div>
+</div>

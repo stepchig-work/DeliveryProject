@@ -1,0 +1,14 @@
+<div class="container  rounded m-2 row align-items-center">
+    <div class="col">
+      <div class="row">
+        <span class="col">{{mealForOrder.mealName}} x {{mealForOrder.ammountOfMeals}}</span>
+        <span class="col">Price: {{mealForOrder.ammountOfMeals * mealForOrder.mealPrice}} </span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <button  class="col bi bi-plus-circle-fill icon-ligh-blue-big btn" (click)="addMeal($event)"></button>
+        <button class="col bi bi-dash-circle-fill icon-ligh-blue-big btn" (click)="removeMeal($event)"></button>
+      </div>
+    </div>
+</div>

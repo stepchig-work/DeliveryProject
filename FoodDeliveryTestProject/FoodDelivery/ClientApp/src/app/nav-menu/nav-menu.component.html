@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+
+      <a class="navbar-brand col-6 offset-3" [routerLink]="['/']">FoodDelivery</a>
+      <div class="col-3 align-self-center">
+        <div class="row" *ngIf="authenticationService && authenticationService.isLoggedIn; else unloggedin">
+          <a routerLink="/account" class="bi bi-person-fill icon-ligh-blue-big" role="button" aria-pressed="true"></a>
+          <button  class="btn btn-secondary btn-sm active m-2"  (click)="logOut($event)">Log out</button>
+        </div>
+        <ng-template #unloggedin>
+          <a routerLink="/login" class=" btn btn-primary btn-sm active  m-2" role="button" aria-pressed="true">Log in</a>
+          <a routerLink="/signin" class="btn btn-secondary btn-sm active m-2" role="button" aria-pressed="true">Sign in</a>
+        </ng-template>
+      </div>
+
+    </div>
+  </nav>
+</header>
+  <div class="container text-center">
+    <alert></alert>
+    <router-outlet></router-outlet>
+  </div>

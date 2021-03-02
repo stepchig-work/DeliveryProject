@@ -1,0 +1,58 @@
+<form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input class="form-control" formControlName="username" placeholder="Enter username" [ngClass]="{ 'is-invalid': submitted && s.username.errors }">
+    <div *ngIf="submitted && s.username.errors" class="invalid-feedback">
+      <div *ngIf="s.username.errors.required">Username is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" formControlName="name" placeholder="Enter name" [ngClass]="{ 'is-invalid': submitted && s.name.errors }">
+    <div *ngIf="submitted && s.name.errors" class="invalid-feedback">
+      <div *ngIf="s.name.errors.required">Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="surname">Surname</label>
+    <input class="form-control" formControlName="surname" placeholder="Enter surname" [ngClass]="{ 'is-invalid': submitted && s.surname.errors }">
+    <div *ngIf="submitted && s.surname.errors" class="invalid-feedback">
+      <div *ngIf="s.surname.errors.required">Surname is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input class="form-control" formControlName="address" placeholder="Enter address" [ngClass]="{ 'is-invalid': submitted && s.address.errors }">
+    <div *ngIf="submitted && s.address.errors" class="invalid-feedback">
+      <div *ngIf="s.address.errors.required">Address is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="mr-sm-2" for="inlineFormCustomSelect">Role</label>
+    <select class="custom-select mr-sm-2" formControlName="accountRole">
+      <option *ngFor="let accountRole of accountsRoles">
+        {{accountRoles2LabelMapping[accountRole]}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group" for="password">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && s.password.errors }">
+    <div *ngIf="submitted && s.password.errors" class="invalid-feedback">
+      <div *ngIf="s.password.errors.required">Password is required</div>
+      <div *ngIf="s.password.errors.minlength">Password must be longer then 7 symbols</div>
+      <div *ngIf="s.password.hasError('passwordStrength')" class="invalid-feedback">
+        {{s.password.errors['passwordStrength']}}
+      </div>
+    </div>
+  </div>
+  <div class="form-group" for="password">
+    <label>ConfirmPassword</label>
+    <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && s.confirmPassword.errors }">
+    <div *ngIf="submitted && s.confirmPassword.errors" class="invalid-feedback">
+      <div *ngIf="s.confirmPassword.errors.required">ConfirmPassword is required</div>
+      <div *ngIf="s.confirmPassword.errors.mustMatch">Passwords must match</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
